@@ -4,6 +4,9 @@ array = input(['Which array type was used for the recordings? \nChoose from ' ..
     'MidScala, SlimJ, CI612, CI622, CI632, Flex16, Flex20, Flex24, Flex28, ' ...
     'FlexSoft \nplace your response between single quotation marks: ']);
 
+patient_number = input(['What is the number of your study participant, used for saving the result files? ' ...
+    '\nplace your response between single quotation marks: ']);
+
 %% insertion depth definition (in mm)
 
 arr_EL_insdepth = {}; % insertion depth per electrode
@@ -13,44 +16,45 @@ arr_EL = {};
 nrEL = 22;
 
 arr_EL.CI612 = 1:nrEL;
-arr_EL_insdepth.CI612 = linspace(3, 18, nrEL);
+arr_EL_insdepth.CI612 = linspace(4.65, 18.9, nrEL); % active length = 14.25 mm, tip= 0.3 mm, distance from electrode tip to proximal white marker = 19.2 mm
 
 arr_EL.CI622 = arr_EL.CI612;
-arr_EL_insdepth.CI622 = linspace(5, 24, nrEL); % 19.1
+arr_EL_insdepth.CI622 = linspace(5.6, 24.7, nrEL); % active length = 19.1 mm, tip= 0.3 mm, distance from electrode tip to proximal white marker = 25 mm
 
 arr_EL.CI632 = arr_EL.CI612;
-arr_EL_insdepth.CI632 = linspace(3, 17, nrEL);
+arr_EL_insdepth.CI632 = linspace(4, 18, nrEL); % active length = 14 mm, tip= 0.4 mm, distance from electrode tip to proximal white marker = 18.4 mm
 
 % Advanced Bionics
 nrEL = 16;
 
 arr_EL.SlimJ = nrEL:-1:1;
-arr_EL_insdepth.SlimJ = linspace(4, 22, nrEL);
+arr_EL_insdepth.SlimJ = linspace(3, 22.5, nrEL); % distance from electrode tip to blue marker = 23 mm, contact spacing = 1.3 mm
 
 arr_EL.MidScala = arr_EL.SlimJ;
-arr_EL_insdepth.MidScala = linspace(3, 18, nrEL);
+arr_EL_insdepth.MidScala = linspace(3.375, 18, nrEL); % contact spacing = 0.975 mm
 
 % MED-EL
 nrEL = 12;
 
 arr_EL.Flex16 = 1:nrEL;
-arr_EL_insdepth.Flex16 = linspace(4, 15, nrEL);
+
+arr_EL_insdepth.Flex16 = linspace(4, 16, nrEL); %contact spacing = 
 
 arr_EL.Flex20 = arr_EL.Flex16;
-arr_EL_insdepth.Flex20 = linspace(4, 19, nrEL);
+arr_EL_insdepth.Flex20 = linspace(4.6, 20, nrEL); %active length = 15.4 mm --> contact spacing = 1.4 mm
 
 arr_EL.Flex24 = arr_EL.Flex16;
-arr_EL_insdepth.Flex24 = linspace(2, 23, nrEL);
+arr_EL_insdepth.Flex24 = linspace(3.1, 24, nrEL); %active length = 20.9 mm --> contact spacing = 1.9 mm 
 
 arr_EL.Flex28 = arr_EL.Flex16;
-arr_EL_insdepth.Flex28 = linspace(3, 27, nrEL);
+arr_EL_insdepth.Flex28 = linspace(4.9, 28, nrEL); %active length = 23.1 mm --> contact spacing = 2.1 mm
 
 arr_EL.FlexSoft = arr_EL.Flex16;
-arr_EL_insdepth.FlexSoft = linspace(3, 31, nrEL);
+arr_EL_insdepth.FlexSoft = linspace(5.1, 31.5, nrEL); %active length = 26.4 mm --> contact spacing = 2.4 mm
 
 while ~isfield(arr_EL_insdepth, array)
     array = input(['\nThe chosen array type was not in the list of options \nChoose from ' ...
-    'MidScala, SlimJ, CI612, CI622, CI632, Flex16, Flex20, Flex24, Flex28, ' ...
+    'MidScala, SlimJ, CI612, CI622, CI632, Flex16, Flex20, Flex24, Flex28, FlexSoft' ...
     'FlexSoft \nplace your response between single quotation marks: ']);
 end
 
